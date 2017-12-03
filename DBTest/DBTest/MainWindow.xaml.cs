@@ -43,7 +43,6 @@ namespace DBTest
 
 		private void button_start_Click(object sender, RoutedEventArgs e)
 		{
-			button_hint_and_next.IsEnabled = true;
 			NewTest();
 		}
 
@@ -61,8 +60,27 @@ namespace DBTest
 
 		private void NewTest()
 		{
+			label_loger.Foreground = Brushes.Black;
+			label_loger.Content = "Powered by Slava";
+			int numer = Convert.ToInt32(text_box_num_of_question.Text);
+
+			if (numer > questions.Count)
+			{
+				test_start = false;
+				label_loger.Content = "Число тестов на выборку неверно. Максимальное кол-во: " + questions.Count;
+				label_loger.Foreground = Brushes.Red;
+				return;
+			}
+			else if (numer < 1)
+			{
+				test_start = false;
+				label_loger.Content = "Число тестов не может быть нулём или отрицательным числом";
+				label_loger.Foreground = Brushes.Red;
+				return;
+			}
+
 			test_start = true;
-			label_loger.Content = "";
+			button_hint_and_next.IsEnabled = true;
 			select_number_of_questions = Randomizer.GetRandomList(Convert.ToInt32(text_box_num_of_question.Text), questions.Count);
 
 			select_questions = new List<Question>(select_number_of_questions.Count);
@@ -77,7 +95,11 @@ namespace DBTest
 		}
 		private void Repeat()
 		{
+			label_loger.Foreground = Brushes.Black;
+			label_loger.Content = "Powered by Slava";
+
 			test_start = true;
+			button_hint_and_next.IsEnabled = true;
 			select_answer.Clear();
 
 			select_questions = Randomizer.ShuffleList(select_questions);
@@ -87,7 +109,11 @@ namespace DBTest
 		}
 		private void CorrectionOfMistakes()
 		{
+			label_loger.Foreground = Brushes.Black;
+			label_loger.Content = "Powered by Slava";
+
 			test_start = true;
+			button_hint_and_next.IsEnabled = true;
 			List<Question> question_with_mistake = new List<Question>();
 
 			for (int i = 0; i < select_answer.Count; ++i)
@@ -154,10 +180,12 @@ namespace DBTest
 			string content = ((TextBlock)((Button)sender).Content).Text;
 			content = content.Split(')')[0];
 
-			label_loger.Content = "";
+			label_loger.Foreground = Brushes.Black;
+			label_loger.Content = "Powered by Slava";
 			int num_of_answer = Convert.ToInt32(content);
-			if (num_of_question < 0 || num_of_answer > select_questions[num_of_question].answers.Count)
+			if (num_of_answer < 0 || num_of_answer > select_questions[num_of_question].answers.Count)
 			{
+				label_loger.Foreground = Brushes.Red;
 				label_loger.Content = "This answer does not exist. Change your choise!";
 				return;
 			}
@@ -180,6 +208,8 @@ namespace DBTest
 
 			if (num_of_question == select_questions.Count)
 			{
+				test_start = false;
+				button_hint_and_next.IsEnabled = false;
 				stack_panel_question.Children.Clear();
 				NextStep(result.ShowDialog(select_answer));
 				result = new Result();
