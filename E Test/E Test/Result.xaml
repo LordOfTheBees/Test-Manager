@@ -1,0 +1,21 @@
+﻿<Window x:Class="E_Test.Result"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:E_Test"
+        mc:Ignorable="d"
+        Title="Result" Height="180" Width="300" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" x:Name="label_result" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" Content="Результат:"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Top">
+            <Button x:Name="button_new_test" Content="Начать новый тест" FontSize="18" Margin="1,1,1,1" Click="button_new_test_Click"/>
+            <Button x:Name="button_repeat_test" Content="Повторить этот тест" FontSize="18" Margin="1,1,1,1" Click="button_repeat_test_Click"/>
+            <Button x:Name="button_start_test_with_wrong_answer" Content="Проработать ошибки" FontSize="18" Margin="1,1,1,1" Click="button_start_test_with_wrong_answer_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

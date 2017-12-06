@@ -1,0 +1,46 @@
+﻿<Window x:Class="E_Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:E_Test"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button x:Name="button_start" Content="Start Test" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="100" FontSize="18" Margin="5,5,5,5" Background="LightGreen" Click="button_start_Click"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <RadioButton GroupName="Language" Content="Rus to Eng" x:Name="rad_but_rus_to_eng"/>
+                <RadioButton GroupName="Language" Content="Eng to Rus" x:Name="rad_but_eng_to_rus" IsChecked="True"/>
+            </StackPanel>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" x:Name="label_question" FontSize="18" Margin="5,50,5,50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox Grid.Row="1" x:Name="text_box_answer" FontSize="18" Margin="5,50,5,50" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        </Grid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="button_check_and_next" Margin="5,5,5,5" Width="100" Content="Check" FontSize="18"/>
+            <Button x:Name="button_hint_and_next" Margin="5,5,5,5" Width="100" Content="Hint" FontSize="18"/>
+        </StackPanel>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" x:Name="label_progress" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Label Grid.Column="1" x:Name="label_loger" Content="DONATE! DONATE! DONATE! DONATE!" FontSize="13" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        </Grid>
+    </Grid>
+</Window>
